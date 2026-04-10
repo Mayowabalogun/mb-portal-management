@@ -1,0 +1,29 @@
+.expired-rents-page .card {
+  border-radius: 0.75rem;
+}
+
+.expired-rents-page .table td,
+.expired-rents-page .table th {
+  vertical-align: middle;
+}
+
+.expired-rents-page .badge.text-bg-warning {
+  font-weight: 600;
+}
+
+.expired-rents-page .state-card {
+  min-height: 82px;
+}
+
+@media (max-width: 991.98px) {
+  .expired-rents-page .table {
+    min-width: 760px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .expired-rents-page .data-card .card-footer .pagination {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+}
