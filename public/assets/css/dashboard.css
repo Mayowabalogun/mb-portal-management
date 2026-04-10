@@ -1,0 +1,57 @@
+body { background: #f8fafc; }
+.widget-card { transition: transform .2s ease; }
+.widget-card:hover { transform: translateY(-2px); }
+.sidebar .nav-link.active { background: #0d6efd; color: #fff !important; }
+
+.app-navbar { z-index: 1030; }
+.alert-dropdown-menu { width: 350px; max-width: calc(100vw - 2rem); }
+
+.app-sidebar {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  width: 280px;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+  z-index: 1020;
+}
+
+.app-main-content {
+  margin-left: 280px;
+  margin-top: 56px;
+  padding: 1.5rem;
+  min-height: calc(100vh - 56px);
+}
+
+@media (max-width: 991.98px) {
+  .app-sidebar {
+    position: static;
+    top: auto;
+    width: 100%;
+    height: auto;
+    border-right: 0 !important;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: none !important;
+  }
+
+  .app-main-content {
+    margin-left: 0;
+    margin-top: 56px;
+    padding: 1rem;
+  }
+
+  .navbar .container-fluid {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .app-main-content .card {
+    border-radius: 0.5rem;
+  }
+
+  .table-responsive {
+    font-size: 0.9rem;
+  }
+}
