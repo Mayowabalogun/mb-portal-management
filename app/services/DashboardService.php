@@ -122,7 +122,7 @@ class DashboardService
             'payments' => $this->repo->getRecentPayments($limit),
             'maintenance' => $this->repo->getRecentMaintenanceRequests($limit),
             'logins' => $this->repo->getRecentLogins($limit),
-            'audit' => $this->auditRepo->getRecentActivity($limit),
+            'audit' => $this->auditRepo->getUnifiedRecentActivity($limit),
         ];
     }
 
@@ -141,6 +141,8 @@ class DashboardService
         return [
             'actions_24h' => $this->auditRepo->countActionsLast24h(),
             'failed_actions' => $this->auditRepo->countFailedActions(),
+            'activity_trends' => $this->auditRepo->getUnifiedTrends(7),
+            'critical_alerts' => $this->auditRepo->getUnifiedCriticalAlerts(10),
         ];
     }
 

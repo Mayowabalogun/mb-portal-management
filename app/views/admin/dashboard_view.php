@@ -166,13 +166,13 @@ $badgeClass = match ($normalizedLevel) {
                                     <tr><td colspan="5" class="text-center py-4 text-muted">No audit activity detected.</td></tr>
                                 <?php else: ?>
                                     <?php foreach (array_slice($recentActivity['audit'], 0, 8) as $audit): ?>
-                                    <?php $payload = json_decode((string) ($audit['payload'] ?? '{}'), true); ?>
                                     <tr>
                                         <td class="ps-4 text-muted small"><?= date('M d, Y | H:i', strtotime((string) ($audit['created_at'] ?? 'now'))) ?></td>
                                         <td>
                                             <span class="badge bg-secondary">
                                                 <?= htmlspecialchars((string) ($audit['event_key'] ?? 'unknown.event')) ?>
                                             </span>
+                                            <small class="text-muted ms-1"><?= htmlspecialchars((string) ($audit['source'] ?? 'audit')) ?></small>
                                         </td>
                                         <td class="small">
                                             <?= htmlspecialchars((string) ($audit['entity_type'] ?? 'system')) ?>
@@ -180,7 +180,7 @@ $badgeClass = match ($normalizedLevel) {
                                                 #<?= (int) $audit['entity_id'] ?>
                                             <?php endif; ?>
                                         </td>
-                                        <td class="small"><?= htmlspecialchars((string) ($payload['actor'] ?? 'system')) ?></td>
+                                        <td class="small"><?= htmlspecialchars((string) ($audit['actor_name'] ?? 'system')) ?></td>
                                         <td class="text-muted pe-4 small"><?= htmlspecialchars((string) ($audit['ip_address'] ?? '-')) ?></td>
                                     </tr>
                                     <?php endforeach; ?>
@@ -188,6 +188,63 @@ $badgeClass = match ($normalizedLevel) {
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white py-3">
+                    <h6 class="mb-0 fw-bold text-dark"><i class="fas fa-chart-area me-2 text-primary"></i>Activity Trends (7 Days)</h6>
+                </div>
+                <div class="card-body">
+                    <?php if (empty($auditSummary['activity_trends'])): ?>
+                        <p class="text-muted mb-0">No activity trend data available.</p>
+                    <?php else: ?>
+                        <div class="table-responsive">
+                            <table class="table table-sm align-middle mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th class="text-end">Events</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($auditSummary['activity_trends'] as $trend): ?>
+                                        <tr>
+                                            <td><?= htmlspecialchars((string) ($trend['day_key'] ?? '')) ?></td>
+                                            <td class="text-end fw-semibold"><?= number_format((int) ($trend['total_events'] ?? 0)) ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white py-3">
+                    <h6 class="mb-0 fw-bold text-dark"><i class="fas fa-triangle-exclamation me-2 text-danger"></i>Critical Alerts</h6>
+                </div>
+                <div class="card-body">
+                    <?php if (empty($auditSummary['critical_alerts'])): ?>
+                        <p class="text-muted mb-0">No critical alerts.</p>
+                    <?php else: ?>
+                        <ul class="list-group list-group-flush">
+                            <?php foreach (array_slice($auditSummary['critical_alerts'], 0, 6) as $critical): ?>
+                                <li class="list-group-item px-0">
+                                    <div class="fw-semibold text-danger"><?= htmlspecialchars((string) ($critical['event_key'] ?? 'unknown')) ?></div>
+                                    <small class="text-muted">
+                                        <?= htmlspecialchars((string) ($critical['source'] ?? 'system')) ?>
+                                        • <?= htmlspecialchars((string) ($critical['created_at'] ?? '')) ?>
+                                    </small>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
