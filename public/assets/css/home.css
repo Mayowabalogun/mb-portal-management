@@ -1,0 +1,67 @@
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #7c3aed;
+  --accent-color: #f59e0b;
+  --dark-bg: #1e293b;
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+  --tenant-color: #059669;
+  --landlord-color: #7c3aed;
+  --vendor-color: #ea580c;
+  --partner-color: #0891b2;
+  --staff-color: #2563eb;
+  --admin-color: #dc2626;
+}
+
+body { font-family: 'Open Sans', sans-serif; color: var(--text-dark); }
+.main-header { position: sticky; top: 0; z-index: 999; background: rgba(255,255,255,.95); box-shadow: 0 2px 20px rgba(0,0,0,.08); }
+.header-upper { padding: 1rem 0; }
+.main-menu .navigation { list-style: none; display: flex; gap: 1.25rem; margin: 0; padding: 0; align-items: center; }
+.main-menu .navigation a { color: var(--text-dark); text-decoration: none; font-weight: 600; }
+.main-menu .dropdown-menu { border: none; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.1); }
+.main-menu .dropdown-item { display: flex; gap: .75rem; align-items: center; }
+.portal-icon { width: 28px; height: 28px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; color: #fff; font-size: .75rem; }
+.portal-icon.tenant{background:var(--tenant-color)} .portal-icon.landlord{background:var(--landlord-color)} .portal-icon.vendor{background:var(--vendor-color)} .portal-icon.partner{background:var(--partner-color)} .portal-icon.staff{background:var(--staff-color)} .portal-icon.admin{background:var(--admin-color)}
+.rent-portal-link { color: var(--primary-color) !important; }
+
+.video-banner-section { min-height: 75vh; display: flex; align-items: center; background: linear-gradient(135deg, rgba(30,41,59,.9), rgba(37,99,235,.8)); color: #fff; }
+.inner-container { max-width: 820px; margin: 0 auto; text-align: center; }
+.variable-text { font-size: 3rem; font-weight: 700; min-height: 4rem; }
+.text { font-size: 1.2rem; opacity: .95; }
+
+.theme-btn { display: inline-flex; align-items: center; gap: .5rem; padding: .9rem 1.8rem; border-radius: 999px; text-decoration: none; background: linear-gradient(135deg,var(--primary-color),var(--secondary-color)); color: #fff; border: 0; }
+.theme-btn:hover { color: #fff; }
+.theme-btn.btn-style-two { background: transparent; border: 2px solid #fff; }
+
+.stats-section { background: linear-gradient(135deg,var(--dark-bg),#334155); color: #fff; padding: 3.5rem 0; }
+.stat-item { text-align: center; padding: 1.25rem; }
+.stat-item i { color: var(--accent-color); font-size: 2rem; }
+.stat-item h3 { font-size: 2rem; font-weight: 700; }
+
+.appointment-section { padding: 4.5rem 0; background: #f8fafc; }
+.sec-title { text-align: center; margin-bottom: 2rem; }
+.separator { width: 80px; height: 4px; border-radius: 2px; margin: .5rem auto 0; background: linear-gradient(90deg,var(--primary-color),var(--secondary-color)); }
+.property-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,0,0,.08); height: 100%; }
+.property-image { height: 180px; background: linear-gradient(135deg,#667eea,#764ba2); color: #fff; display: flex; align-items: center; justify-content: center; position: relative; font-size: 2.3rem; }
+.hostel-bg { background: linear-gradient(135deg,#f093fb,#f5576c); }
+.shop-bg { background: linear-gradient(135deg,#4facfe,#00f2fe); }
+.property-badge { position: absolute; top: .8rem; right: .8rem; background: var(--accent-color); color: #fff; border-radius: 999px; font-size: .8rem; padding: .25rem .7rem; }
+.property-content { padding: 1.25rem; }
+.property-location { color: var(--text-light); margin-bottom: .5rem; }
+.property-price { color: var(--primary-color); font-size: 1.35rem; font-weight: 700; }
+
+.booking-form-section { background: #fff; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,.08); padding: 2.5rem; margin-top: 2rem; }
+.default-form .form-group { margin-bottom: 1rem; }
+.default-form input,.default-form select,.default-form textarea { width: 100%; border: 2px solid #e5e7eb; border-radius: 10px; padding: .9rem 1rem; }
+.default-form textarea { min-height: 120px; }
+
+.main-footer { background: var(--dark-bg); color: #fff; padding: 3.5rem 0 1.5rem; }
+.footer-widget h4 { margin-bottom: 1rem; }
+.footer-widget ul { list-style: none; padding: 0; margin: 0; }
+.footer-widget li { margin-bottom: .6rem; }
+.footer-widget a { color: rgba(255,255,255,.75); text-decoration: none; }
+.footer-widget a:hover { color: var(--accent-color); }
+.contact-info li { display: flex; gap: .75rem; }
+.contact-info i { color: var(--accent-color); margin-top: .2rem; }
+
+@media (max-width: 768px){ .variable-text{font-size:2rem;} .video-banner-section{min-height:60vh;} }
